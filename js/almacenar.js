@@ -4,17 +4,14 @@ document.getElementById("agregar").addEventListener("click", function() {
   
     // Verificar que el campo no esté vacío
     if (item.trim() !== "") {
-      // Obtener el listado de ítems desde localStorage (o crear uno nuevo si no existe)
-      let contenedor = JSON.parse(localStorage.getItem("contenedor")) || [];
+      
+      let contenedor = JSON.parse(localStorage.getItem("contenedor")) || []; // Obtener el listado de ítems desde localStorage
   
-      // Agregar el nuevo ítem al listado
-      contenedor.push(item);
+      contenedor.push(item); // Agregar el nuevo ítem al listado
   
-      // Guardar el listado actualizado en localStorage
-      localStorage.setItem("contenedor", JSON.stringify(contenedor));
-  
-      // Actualizar la vista del listado
-      updateContenedor();
+      localStorage.setItem("contenedor", JSON.stringify(contenedor));  // Guardar el listado actualizado en localStorage
+
+      updateContenedor();  // Actualizar la vista del listado
   
       // Limpiar el campo de entrada
       document.getElementById("item").value = "";
@@ -24,15 +21,13 @@ document.getElementById("agregar").addEventListener("click", function() {
   });
   
   // Función para actualizar la vista del listado
-  function updateContenedor() {
-    // Obtener el contenedor de la lista
-    const ul = document.getElementById("contenedor");
+  function updateContenedor() { 
   
-    // Limpiar el contenido actual del ul
-    ul.innerHTML = "";
+    const ul = document.getElementById("contenedor");  // Obtener el contenedor de la lista
   
-    // Obtener el listado de ítems desde localStorage
-    const contenedor = JSON.parse(localStorage.getItem("contenedor")) || [];
+    ul.innerHTML = ""; // Limpiar el contenido actual del ul
+  
+    const contenedor = JSON.parse(localStorage.getItem("contenedor")) || [];   // Obtener el listado de ítems desde localStorage
   
     // Crear los elementos li y añadirlos al ul
     contenedor.forEach(function(item) {
