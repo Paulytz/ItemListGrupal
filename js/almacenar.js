@@ -37,6 +37,23 @@ document.getElementById("agregar").addEventListener("click", function() {
     });
   }
   
+  //eliminar los elementos de la lista en el local y borrarlos de la vista.
+  document.getElementById("limpiar").addEventListener("click", function() {
+    const contenedor = JSON.parse(localStorage.getItem("contenedor")); 
+    let tamaño = contenedor.length;
+    if (contenedor.length > 0) { 
+        for (let i = 0; i < tamaño; i++) {
+          contenedor.pop();
+        }
+      localStorage.setItem("contenedor", JSON.stringify(contenedor));
+      updateContenedor();
+    }
+    else {
+      alert("No hay ítems para eliminar.");
+    }
+  });
+
+
   // Actualizar la vista al cargar la página (para mostrar ítems ya guardados)
   document.addEventListener("DOMContentLoaded", updateContenedor);
   
